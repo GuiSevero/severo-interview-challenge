@@ -3,9 +3,10 @@ import usePosts, { type Post } from "./usePosts";
 
 export function PostList() {
   const posts = usePosts();
+  const sortedPosts = posts.sort((postA, postB) => -postA.title.localeCompare(postB.title));
   return (
     <div className="p-10 bg-white rounded-lg text-slate-900">
-      {posts.map((post) => (
+      {sortedPosts.map((post) => (
         <PostView key={post.id} {...post} />
       ))}
     </div>
